@@ -1,8 +1,11 @@
 <?php
-
-    include 'database.php';
+    session_start();
+    include_once 'database.php';
+    include_once 'functions.php';
     const EMAIL_REQUIRED = 'Vul je email in';
     const PASSWORD_REQUIRED = 'Vul je wachtwoord in';
+
+    const CREDENTIALS_NOT_VALID = 'De ingevulde gebruikersnaam/wachtwoord combinatie is niet correct.';
 
     $errors = [];
     $inputs = [];
@@ -27,6 +30,17 @@
 
         if(count($errors) === 0){
 
+            $result = checkLogin($inputs);
+
+            switch($result){
+                case 'ADMIN':
+                    header('Location: admin.php');
+                    break;
+                case 'FAILURE':
+                    $errors['credentials'] = CREDENTIALS_NOT_VALID;
+
+                    break;
+            }
 
         }
 
