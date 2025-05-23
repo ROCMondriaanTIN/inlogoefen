@@ -69,6 +69,15 @@
 <body>
 
     <h1>Inloggen</h1>
+
+    <?php if(!empty($errors['credentials'])): ?>
+
+    <div class="alert alert-danger">
+        <?=$errors['credentials']  ?>
+    </div>
+
+    <?php endif; ?>
+
     <div class="container">
         <div class="row">
             <div class="col-md-3"></div>
