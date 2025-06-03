@@ -15,24 +15,18 @@ function checkLogin($inputs)
         //bestaat niet, dus niet ingelogd
         return 'FAILURE';
     } else {
-        //var_dump($users[0]);
         //bestaat wel, dan gaan we wachtwoord checken
 
         $user = $users[0];
-        /*echo $user['email'];
-        echo '<br>';
-        echo $user['password'];
-        echo '<br>';
-        echo $inputs['password'];
-        echo '<br>';*/
 
         if (password_verify($inputs['password'], $user['password'])) {
             //1. email klopt/bestaat
             //2. wachtwoord klopt
             $_SESSION['email'] = $user['email'];
             $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_role'] = $user['role'];
 
-            return 'ADMIN';
+            return $user['role'];
         } else {
             return 'FAILURE';
         }

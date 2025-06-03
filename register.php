@@ -29,10 +29,12 @@
             global $pdo;
 
             $hashedPassword = password_hash($inputs['password'], PASSWORD_DEFAULT);
+            $role = 'member';
 
-            $query = $pdo->prepare('INSERT INTO user (email, password) VALUES(:email, :password)');
+            $query = $pdo->prepare('INSERT INTO user (email, password, role) VALUES(:email, :password, :role)');
             $query->bindParam(':email', $inputs['email']);
             $query->bindParam(':password', $hashedPassword);
+            $query->bindParam(':role', $role);
 
             $query->execute();
 

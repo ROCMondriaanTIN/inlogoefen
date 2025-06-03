@@ -33,8 +33,11 @@
             $result = checkLogin($inputs);
 
             switch($result){
-                case 'ADMIN':
+                case 'admin':
                     header('Location: admin.php');
+                    break;
+                case 'member':
+                    header('Location: home.php');
                     break;
                 case 'FAILURE':
                     $errors['credentials'] = CREDENTIALS_NOT_VALID;
