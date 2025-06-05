@@ -20,7 +20,7 @@ if(!isLoggedIn()){
     <?php
     include_once 'bootstrap.php';
     ?>
-    <title>Home</title>
+    <title>Geen toestemming</title>
 </head>
 <body>
 
@@ -31,15 +31,12 @@ if(!isLoggedIn()){
 </header>
 
 <main>
-    <h1>Home</h1>
+    <h1>Geen toestemming</h1>
 
 
 
     <p>
-        Welkom
-    <?php
-        echo $_SESSION['email'];
-    ?>
+        U heeft geen toestemming om deze pagina te bekijken.
     </p>
 
 </main>

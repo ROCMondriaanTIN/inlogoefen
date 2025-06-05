@@ -36,8 +36,6 @@ function checkLogin($inputs)
 
 function isLoggedIn(): bool
 {
-
-
     if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
         //dan zijn we ingelogd
         return true;
@@ -45,8 +43,18 @@ function isLoggedIn(): bool
         //we zijn niet ingelogd
         return false;
     }
+}
 
-
+function hasRole($role): bool
+{
+    $roleInSession = $_SESSION['user_role'];
+    if (isset($roleInSession) && $roleInSession === $role) {
+        //dan heeft de gebruiker de juiste rol
+        return true;
+    } else {
+        //de gebruiker heeft niet de juiste rol
+        return false;
+    }
 }
 
 
